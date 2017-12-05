@@ -10,14 +10,6 @@ public class Agenda2Test extends TestCase {
 	
 	private Agenda2 agenda;
 	
-	@BeforeClass
-	public static void setUpClass() throws Exception { 
-		//Inicialización general de variables, escritura del log...
-	}
-	@AfterClass
-	public static void tearDownClass() throws Exception { 
-		//Liberación de recursos, escritura en el log...
-	}
 	@Before
 	public void setUp() { 
 		//Inicialización de variables antes de cada Test
