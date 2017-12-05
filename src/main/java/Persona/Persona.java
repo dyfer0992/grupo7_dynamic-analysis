@@ -130,8 +130,8 @@ public class Persona
 	public int obtenerEdad ()
 	{
 		Calendar fecha = new GregorianCalendar();
-		int año = fecha.get(Calendar.YEAR);
-		return (año-anioNacim);		
+		int anio = fecha.get(Calendar.YEAR);
+		return (anio-anioNacim);		
 	}
 	
 	public int obtenerAnioNacim ()
