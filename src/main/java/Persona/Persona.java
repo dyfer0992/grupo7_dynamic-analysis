@@ -2,7 +2,6 @@ package persona;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Scanner;
 
 public class Persona 
 {
@@ -28,62 +27,47 @@ public class Persona
 	}
 	public boolean tieneDatos ()
 	{
-		if (!nombre.equals("") && !apellidos.equals("") && !telefono.equals(""))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return  !nombre.equals("") && !apellidos.equals("") && !telefono.equals("");	
 	}
 	
 	public void ponerNombre (String nombreNuevo)
 	{
-		Scanner teclado = new Scanner (System.in);
-		nombreNuevo = teclado.next();
+		this.nombre = nombreNuevo;
 	}
 	
 	public void ponerApellidos (String apellidosNuevo)
 	{
-		Scanner teclado = new Scanner (System.in);
-		apellidosNuevo = teclado.next();
+		this.apellidos = apellidosNuevo;
 	}
 	
 	public void ponerDireccion (String calle)
 	{
-		Scanner teclado = new Scanner (System.in);
-		calle = teclado.next();
+		this.direccion = calle;
 	}
 	
 	public void ponerPoblacion (String poblacionNueva)
 	{
-		Scanner teclado = new Scanner (System.in);
-		poblacionNueva = teclado.next();
+		this.poblacion = poblacionNueva;
 	}
 	
 	public void ponerProvincia (String provinciaNueva)
 	{
-		Scanner teclado = new Scanner (System.in);
-		provinciaNueva = teclado.next();
+		this.provincia = provinciaNueva;
 	}
 	
 	public void ponerCodPostal (String codPostal)
 	{
-		Scanner teclado = new Scanner (System.in);
-		codPostal = teclado.next();
+		this.codigoPostal = codPostal;
 	}
 	
 	public void ponerTelefono (String tfno)
 	{
-		Scanner teclado = new Scanner (System.in);
-		tfno = teclado.next();
+		this.telefono = tfno;
 	}
 	
 	public void ponerAnioNacim (int anio)
 	{
-		Scanner teclado = new Scanner (System.in);
-		anio = teclado.nextInt();
+		this.anioNacim = anio;
 	}
 	
 	public String obtenerNombre ()
@@ -98,8 +82,7 @@ public class Persona
 	
 	public String obtenerDireccionCompleta ()
 	{
-		String x = (direccion + " " + poblacion + " " + provincia + " " + codigoPostal);
-		return x;
+		return direccion + " " + poblacion + " " + provincia + " " + codigoPostal;
 	}
 	
 	public String obtenerDireccion ()
