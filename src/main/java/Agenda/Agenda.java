@@ -1,4 +1,4 @@
-package agenda;
+package main.java.agenda;
 
 import persona.Persona;
 
