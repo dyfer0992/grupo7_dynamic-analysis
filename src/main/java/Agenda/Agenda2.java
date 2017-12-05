@@ -1,6 +1,6 @@
-package Agenda;
+package agenda;
 
-import Persona.Persona;
+import persona.Persona;
 
 
 class NodoAgenda 
@@ -17,7 +17,8 @@ class NodoAgenda
 
 public class Agenda2 implements Agenda 
 {
-	private NodoAgenda cab, cent;
+	private NodoAgenda cab;
+	private NodoAgenda cent;
 	private int numPersonas;
 
 	public Agenda2 () 
@@ -86,14 +87,7 @@ public class Agenda2 implements Agenda
 	}
 	public boolean estaVacia ()
 	{
-		if (cab.sig == null)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return this.cab == this.cent;
 	}
 	public int numeroPersonas ()
 	{

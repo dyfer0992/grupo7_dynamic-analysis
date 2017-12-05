@@ -1,6 +1,6 @@
-package Agenda;
+package agenda;
 
-import Persona.Persona;
+import persona.Persona;
 
 
 	public interface Agenda 

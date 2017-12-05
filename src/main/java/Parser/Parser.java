@@ -1,6 +1,6 @@
-package Parser;
+package parser;
 
-import Persona.Persona;
+import persona.Persona;
 
 public class Parser {
 	final static String NOM = "NOMBRE="; //7
