@@ -15,6 +15,9 @@ public class Agenda2Test extends TestCase {
 	private Persona p3;
 	
 	private static final String PROVINCIA_M = "Madrid";
+	private static final String ANTONIO = "Antonio Muñoz";
+	private static final String ALVARO = "Alvaro Arranz";
+	private static final String DIEGO = "Diego Trejos";
 	
 	private void inicializacionPersonas() {
 		agenda = new Agenda2();
@@ -124,50 +127,50 @@ public class Agenda2Test extends TestCase {
 	/* Función eliminarPersona  */
 	@Test
 	public void testEliminarEnAgendaVacia() {
-		assertFalse(agenda.eliminarPersona("Diego Trejos"));
+		assertFalse(agenda.eliminarPersona(DIEGO));
 	}
 	
 	@Test
 	public void testEliminarNoEstaEnAgenda() {
 		agenda.aniadirPersona(p2);
-		assertFalse(agenda.eliminarPersona("Diego Trejos"));
+		assertFalse(agenda.eliminarPersona(DIEGO));
 	}
 	
 	@Test
 	public void testEliminarCorrecto() {
 		agenda.aniadirPersona(p1);
-		assertTrue(agenda.eliminarPersona("Diego Trejos"));
+		assertTrue(agenda.eliminarPersona(DIEGO));
 	}
 	
 	
 	@Test
 	public void testEliminarPosicionPrimera() {
 		rellenarCompletoAgenda();
-		assertTrue(agenda.eliminarPersona("Alvaro Arranz"));
+		assertTrue(agenda.eliminarPersona(ALVARO));
 	}
 	
 	@Test
 	public void testEliminarPosicionSegunda() {
 		rellenarCompletoAgenda();
-		assertTrue(agenda.eliminarPersona("Antonio Muñoz"));
+		assertTrue(agenda.eliminarPersona(ANTONIO));
 	}
 	
 	@Test
 	public void testEliminarPosicionMedio() {
 		rellenarCompletoAgenda();
-		assertTrue(agenda.eliminarPersona("Antonio Muñoz"));
+		assertTrue(agenda.eliminarPersona(ANTONIO));
 	}
 	
 	@Test
 	public void testEliminarPosicionPenultima() {
 		rellenarCompletoAgenda();
-		assertTrue(agenda.eliminarPersona("Antonio Muñoz"));
+		assertTrue(agenda.eliminarPersona(ANTONIO));
 	}
 	
 	@Test
 	public void testEliminarPosicionUltima() {
 		rellenarCompletoAgenda();
-		assertTrue(agenda.eliminarPersona("Diego Trejos"));
+		assertTrue(agenda.eliminarPersona(DIEGO));
 	}
 	
 	
