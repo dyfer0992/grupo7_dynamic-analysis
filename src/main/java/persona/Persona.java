@@ -1,8 +1,5 @@
 package persona;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 public class Persona 
 {
 	private String nombre;
@@ -84,11 +81,6 @@ public class Persona
 		return nombre + " " + apellidos;
 	}
 	
-	public String obtenerDireccionCompleta ()
-	{
-		return direccion + " " + poblacion + " " + provincia + " " + codigoPostal;
-	}
-	
 	public String obtenerDireccion ()
 	{
 		return direccion;
@@ -114,31 +106,8 @@ public class Persona
 		return telefono;
 	}
 	
-	public int obtenerEdad ()
-	{
-		Calendar fecha = new GregorianCalendar();
-		int anio = fecha.get(Calendar.YEAR);
-		return (anio-anioNacim);		
-	}
-	
 	public int obtenerAnioNacim ()
 	{
 		return anioNacim;
-	}
-	
-	Persona copiarPersona ()
-	{
-		Persona p = new Persona ();
-		
-		p.nombre = this.nombre;
-		p.apellidos = this.apellidos;
-		p.direccion = this.direccion;
-		p.codigoPostal = this.codigoPostal;
-		p.provincia = this.provincia;
-		p.anioNacim = this.anioNacim;
-		p.poblacion = this.poblacion;
-		p.telefono = this.telefono;
-		
-		return p;
 	}
 }
