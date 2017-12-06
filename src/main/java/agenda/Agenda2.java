@@ -19,13 +19,11 @@ public class Agenda2 implements Agenda
 {
 	private NodoAgenda cab;
 	private NodoAgenda cent;
-	private int numPersonas;
 
 	public Agenda2 () 
 	{
 		cent = new NodoAgenda (null, null);
 		cab = new NodoAgenda (null, cent);
-		numPersonas = 0;
 	}
 
 	public boolean aniadirPersona (Persona p)
@@ -58,28 +56,29 @@ public class Agenda2 implements Agenda
 	{
 		NodoAgenda ant = this.cab;
 		NodoAgenda act = ant.sig;
-		if (this.cab != this.cent) 
+		boolean resul = false;
+		if (estaVacia()) 
 		{
-			while (act.info.obtenerNombre()!=nombre)
+			while (act.info != null && act.info.obtenerNombreApellidos().compareTo(nombre) < 0)
 			{
 				act=act.sig;
 				ant=ant.sig;
 			}
-			act=act.sig;
-			ant.sig=act;
-			return true;
+			if(act.info != null && act.info.obtenerNombreApellidos().compareTo(nombre) == 0) {
+				ant.sig=act.sig;
+				resul = true;
+			}
 		}
-		else return false;
+		return resul;
 	}
 	public Persona quitarPrimero ()
 	{
-		Persona p = new Persona();
-		if (this.cab == this.cent)
-		{
+		Persona p;
+		if (estaVacia()) {
+			p = null;
+		} else {
 			p = this.cab.sig.info;
-			this.cab.sig = cab.sig.sig;
-
-			numPersonas--;
+			this.cab.sig = this.cab.sig.sig;
 		}
 		return p;
 	}
@@ -89,21 +88,15 @@ public class Agenda2 implements Agenda
 	}
 	public int numeroPersonas ()
 	{
-		NodoAgenda aux = cab;
-		int i = 0;
-		if (aux.sig != null)
-		{
-			while (aux.sig != cent)
-			{
-				i++;
-				aux = aux.sig;
-			}
-			return i;
+		int num = 0;
+		NodoAgenda ant = this.cab;
+		
+		while(ant.sig != this.cent) {
+			num++;
+			ant = ant.sig;
 		}
-		else
-		{
-			return 0;
-		}
+		
+		return num;
 	}
 }
 
