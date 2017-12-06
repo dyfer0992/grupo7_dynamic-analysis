@@ -69,7 +69,14 @@ public class Agenda2Test extends TestCase {
 	@Test
 	public void testAnniadirEnAgendaNoVacia() {
 		agenda.aniadirPersona(p1);
-		assertTrue(agenda.aniadirPersona(p2));
+		agenda.aniadirPersona(p2);
+		assertTrue(agenda.aniadirPersona(p3));
+	}
+	
+	@Test
+	public void testAnniadirInvalidoPorRepeticion() {
+		agenda.aniadirPersona(p1);
+		assertFalse(agenda.aniadirPersona(p1));
 	}
 	
 

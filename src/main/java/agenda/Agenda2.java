@@ -34,24 +34,22 @@ public class Agenda2 implements Agenda
 		NodoAgenda act = ant.sig;
 		NodoAgenda nuevoNodo;
 		boolean resul = false;
-
-		if (this.cab.sig==this.cent) 
-		{
+		
+		if (act.info == null) {
 			nuevoNodo = new NodoAgenda(p, act);
 			ant.sig = nuevoNodo;
-			numPersonas = 1;
-			resul=true;
-		}
-		else{
-			while (act!=this.cent) 
-			{
-				act=act.sig;
-				ant=ant.sig;
+			resul= true;
+		} else {
+			while(act.info != null && act.info.obtenerNombreApellidos().compareTo(p.obtenerNombreApellidos()) < 0) {
+				ant = act;
+				act = act.sig;
 			}
-			numPersonas++;
-			nuevoNodo = new NodoAgenda(p, act);
-			ant.sig = nuevoNodo;
-			resul = true;
+		
+			if (act == this.cent || act.info.obtenerNombreApellidos().compareTo(p.obtenerNombreApellidos()) > 0) {
+				nuevoNodo = new NodoAgenda(p, act);
+				ant.sig = nuevoNodo;
+				resul= true;
+			}
 		}
 		return resul;
 	}

@@ -80,6 +80,10 @@ public class Persona
 		return apellidos;
 	}
 	
+	public String obtenerNombreApellidos() {
+		return nombre + " " + apellidos;
+	}
+	
 	public String obtenerDireccionCompleta ()
 	{
 		return direccion + " " + poblacion + " " + provincia + " " + codigoPostal;
