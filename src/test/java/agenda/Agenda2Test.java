@@ -185,5 +185,18 @@ public class Agenda2Test extends TestCase {
 	public void testQuitarPrimeroAgendaVacia() {
 		assertFalse(p2.equals(agenda.quitarPrimero()));
 	}
+	
+	/* función numeroPersonas */
+	
+	@Test
+	public void testNumeroPersonasAgendaVacia() {
+		assertEquals(0, agenda.numeroPersonas());
+	}
+	
+	@Test
+	public void testNumeroPersonasAgendaNoVacia() {
+		rellenarCompletoAgenda();
+		assertEquals(3, agenda.numeroPersonas());
+	}
 
 }
