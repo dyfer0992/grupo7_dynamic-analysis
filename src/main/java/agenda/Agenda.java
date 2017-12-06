@@ -8,7 +8,6 @@ import persona.Persona;
 		boolean aniadirPersona (Persona p);
 		boolean eliminarPersona (String nombre);
 		Persona quitarPrimero ();
-		boolean estaVacia ();
 		int numeroPersonas ();
 		
 	}

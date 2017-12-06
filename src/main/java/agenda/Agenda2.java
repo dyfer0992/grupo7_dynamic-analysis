@@ -75,7 +75,7 @@ public class Agenda2 implements Agenda
 	public Persona quitarPrimero ()
 	{
 		Persona p;
-		if (estaVacia()) {
+		if (this.cab.sig.info == null) {
 			p = null;
 		} else {
 			p = this.cab.sig.info;
@@ -84,10 +84,6 @@ public class Agenda2 implements Agenda
 		return p;
 	}
 	
-	public boolean estaVacia ()
-	{
-		return this.cab.sig == this.cent;
-	}
 	
 	public int numeroPersonas ()
 	{
