@@ -57,7 +57,7 @@ public class Agenda2 implements Agenda
 		NodoAgenda ant = this.cab;
 		NodoAgenda act = ant.sig;
 		boolean resul = false;
-		if (estaVacia()) 
+		if (act.info != null) 
 		{
 			while (act.info != null && act.info.obtenerNombreApellidos().compareTo(nombre) < 0)
 			{
@@ -71,6 +71,7 @@ public class Agenda2 implements Agenda
 		}
 		return resul;
 	}
+	
 	public Persona quitarPrimero ()
 	{
 		Persona p;
@@ -82,10 +83,12 @@ public class Agenda2 implements Agenda
 		}
 		return p;
 	}
+	
 	public boolean estaVacia ()
 	{
-		return this.cab == this.cent;
+		return this.cab.sig == this.cent;
 	}
+	
 	public int numeroPersonas ()
 	{
 		int num = 0;
