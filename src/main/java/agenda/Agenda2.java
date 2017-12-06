@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import parser.Parser;
 import persona.Persona;
@@ -28,6 +30,9 @@ public class Agenda2 implements Agenda
 {
 	private NodoAgenda cab;
 	private NodoAgenda cent;
+	
+	//Use a logger to log this exception
+	private static final Logger LOGGER = Logger.getLogger( Agenda2.class.getName() );
 
 	public Agenda2 () 
 	{
@@ -121,8 +126,7 @@ public class Agenda2 implements Agenda
 		        resultado = true;
 		    }
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.log(Level.ALL, "Error al abrir fichero de escritura");
 		} finally {
 			if(output != null) output.close();
 		}
@@ -152,17 +156,14 @@ public class Agenda2 implements Agenda
 		      } while ((cad = bufferentrada.readLine()) != null);
 		    }
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.log(Level.ALL, "No se encuentra el fichero de lectura");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.log(Level.ALL, "Error al abrir el fichero de lectura");
 		} finally {
 			try {
 				if(bufferentrada != null) bufferentrada.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOGGER.log(Level.ALL, "Error al cerrar fichero de lectura");
 			}
 		}
 	    
