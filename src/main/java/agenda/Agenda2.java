@@ -30,16 +30,16 @@ public class Agenda2 implements Agenda
 
 	public boolean aniadirPersona (Persona p)
 	{
-		NodoAgenda aux = this.cab;
 		NodoAgenda ant = this.cab;
 		NodoAgenda act = ant.sig;
-		aux.info=p;
+		NodoAgenda nuevoNodo;
 		boolean resul = false;
 
 		if (this.cab.sig==this.cent) 
 		{
-			aux.sig=this.cent;
-			this.cab.sig=aux;
+			nuevoNodo = new NodoAgenda(p, act);
+			ant.sig = nuevoNodo;
+			numPersonas = 1;
 			resul=true;
 		}
 		else{
@@ -49,8 +49,8 @@ public class Agenda2 implements Agenda
 				ant=ant.sig;
 			}
 			numPersonas++;
-			ant.sig=aux;
-			aux.sig=act;
+			nuevoNodo = new NodoAgenda(p, act);
+			ant.sig = nuevoNodo;
 			resul = true;
 		}
 		return resul;
