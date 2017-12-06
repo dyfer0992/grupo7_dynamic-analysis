@@ -1,5 +1,14 @@
 package agenda;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import parser.Parser;
 import persona.Persona;
 
 
@@ -94,6 +103,70 @@ public class Agenda2 implements Agenda
 		}
 		
 		return num;
+	}
+	
+	public boolean guardarAgenda () { 
+	    NodoAgenda act = this.cab.sig;
+		Parser p = new Parser();
+	    boolean resultado = false;
+	    PrintWriter output = null;
+	    
+		try {
+			output = new PrintWriter(new BufferedWriter(new FileWriter("archivo.txt")));
+		    
+		    while(act.info != null) {
+		    	p.ponerPersona(act.info);
+		    	act = act.sig;
+		        output.println(p.obtenerLinea());
+		        resultado = true;
+		    }
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(output != null) output.close();
+		}
+	    
+	    return resultado;
+	}
+
+	public boolean recuperarAgenda() {
+		boolean resul = false;
+	    Parser p = new Parser();
+	    String cad;
+	    BufferedReader bufferentrada = null;
+	    
+		try {
+		    bufferentrada = new BufferedReader(new FileReader("archivo.txt"));
+
+		    if ((cad = bufferentrada.readLine()) != null)
+		    {
+		      resul = true;
+		      do
+		      {
+		        p.ponerLinea(cad);
+		        Persona auxPersona = p.obtenerPersona();
+		        if (auxPersona.tieneDatos()) {
+		          aniadirPersona(auxPersona);
+		        }
+		      } while ((cad = bufferentrada.readLine()) != null);
+		    }
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(bufferentrada != null) bufferentrada.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	    
+	    return resul;
 	}
 }
 

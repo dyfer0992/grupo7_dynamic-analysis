@@ -1,5 +1,7 @@
 package agenda;
 
+import java.io.IOException;
+
 import persona.Persona;
 
 
@@ -9,5 +11,7 @@ import persona.Persona;
 		boolean eliminarPersona (String nombre);
 		Persona quitarPrimero ();
 		int numeroPersonas ();
+		boolean guardarAgenda () throws IOException;
+		boolean recuperarAgenda () throws IOException;
 		
 	}

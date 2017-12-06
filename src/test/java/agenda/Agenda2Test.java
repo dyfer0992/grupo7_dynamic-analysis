@@ -1,6 +1,11 @@
 package agenda;
 
 import junit.framework.*;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.junit.*;
 import org.junit.Test;
 
@@ -13,17 +18,19 @@ public class Agenda2Test extends TestCase {
 	private Persona p1;
 	private Persona p2;
 	private Persona p3;
+	Path path = Paths.get("archivo.txt");
 	
 	private static final String PROVINCIA_M = "Madrid";
 	private static final String ANTONIO = "Antonio Muñoz";
 	private static final String ALVARO = "Alvaro Arranz";
 	private static final String DIEGO = "Diego Trejos";
 	
-	private void inicializacionPersonas() {
+	private void inicializacionPersonas() throws Exception {
 		agenda = new Agenda2();
 		p1 = new Persona();
 		p2 = new Persona();
 		p3 = new Persona();
+		Files.createFile(path);
 		
 		p1.ponerNombre("Diego");
 		p1.ponerApellidos("Trejos");
@@ -61,13 +68,14 @@ public class Agenda2Test extends TestCase {
 	
 	
 	@Before
-	public void setUp() {
+	public void setUp() throws Exception{
 		this.agenda = new Agenda2();
 		inicializacionPersonas();
 	}
 	@After
-	public void tearDown() { 
+	public void tearDown() throws Exception{ 
 		//tareas a realizar después de cada test
+		Files.delete(path);
 	}
 	
 	@Test
@@ -197,6 +205,32 @@ public class Agenda2Test extends TestCase {
 	public void testNumeroPersonasAgendaNoVacia() {
 		rellenarCompletoAgenda();
 		assertEquals(3, agenda.numeroPersonas());
+	}
+	
+	
+	/* función guardarAgenda */
+	@Test
+	public void testGuardarAgendaNoVacia() {
+		agenda.aniadirPersona(p1);
+		assertTrue(agenda.guardarAgenda());
+	}
+	@Test
+	public void testGuardarAgendaVacia() {
+		assertFalse(agenda.guardarAgenda());
+	}
+	
+	/* función recuperarAgenda */
+	@Test
+	public void testRecuperarAgendaNoVacia() {
+		rellenarCompletoAgenda();
+		agenda.guardarAgenda();
+		assertTrue(agenda.recuperarAgenda());
+
+	}
+	@Test
+	public void testRecuperarAgendaVacia() {
+		agenda.guardarAgenda();
+		assertFalse(agenda.recuperarAgenda());
 	}
 
 }
