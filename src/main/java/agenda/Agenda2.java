@@ -74,10 +74,8 @@ public class Agenda2 implements Agenda
 	
 	public Persona quitarPrimero ()
 	{
-		Persona p;
-		if (this.cab.sig.info == null) {
-			p = null;
-		} else {
+		Persona p = null;
+		if (this.cab.sig.info != null) {
 			p = this.cab.sig.info;
 			this.cab.sig = this.cab.sig.sig;
 		}
