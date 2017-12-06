@@ -79,5 +79,40 @@ public class Agenda2Test extends TestCase {
 		assertFalse(agenda.aniadirPersona(p1));
 	}
 	
+	@Test
+	public void testAnniadirPosicionPrimera() {
+		agenda.aniadirPersona(p1);
+		agenda.aniadirPersona(p3);
+		assertTrue(agenda.aniadirPersona(p2));
+	}
+	
+	@Test
+	public void testAnniadirPosicionSegunda() {
+		agenda.aniadirPersona(p2);
+		agenda.aniadirPersona(p1);
+		assertTrue(agenda.aniadirPersona(p3));
+	}
+	
+	@Test
+	public void testAnniadirPosicionMedio() {
+		agenda.aniadirPersona(p2);
+		agenda.aniadirPersona(p1);
+		assertTrue(agenda.aniadirPersona(p3));
+	}
+	
+	@Test
+	public void testAnniadirPosicionPenultima() {
+		agenda.aniadirPersona(p2);
+		agenda.aniadirPersona(p1);
+		assertTrue(agenda.aniadirPersona(p3));
+	}
+	
+	@Test
+	public void testAnniadirPosicionUltima() {
+		agenda.aniadirPersona(p2);
+		agenda.aniadirPersona(p3);
+		assertTrue(agenda.aniadirPersona(p1));
+	}
+	
 
 }
