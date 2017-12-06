@@ -2,9 +2,12 @@ package agenda;
 
 import junit.framework.*;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.*;
 import org.junit.Test;
@@ -20,17 +23,24 @@ public class Agenda2Test extends TestCase {
 	private Persona p3;
 	Path path = Paths.get("archivo.txt");
 	
+	//Use a logger to log this exception
+	private static final Logger LOGGER = Logger.getLogger( Agenda2.class.getName() );
+	
 	private static final String PROVINCIA_M = "Madrid";
 	private static final String ANTONIO = "Antonio Muñoz";
 	private static final String ALVARO = "Alvaro Arranz";
 	private static final String DIEGO = "Diego Trejos";
 	
-	private void inicializacionPersonas() throws Exception {
+	private void inicializacionPersonas() {
 		agenda = new Agenda2();
 		p1 = new Persona();
 		p2 = new Persona();
 		p3 = new Persona();
-		Files.createFile(path);
+		try {
+			Files.createFile(path);
+		} catch (IOException e) {
+			LOGGER.log(Level.ALL, "Error al crear el fichero");
+		}
 		
 		p1.ponerNombre("Diego");
 		p1.ponerApellidos("Trejos");
